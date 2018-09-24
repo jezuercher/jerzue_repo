@@ -1,0 +1,36 @@
+---
+title: "Homework2"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+rm(list=ls()) #clearing all variables etc.
+samples = rlnorm(100, 1, 0.25) #drawing 100 samples form a random distribution
+hist.samples = hist(samples, plot=F) #create a hist diagramm without plotting it, in order to get the counts
+hist.samples$counts = log(hist.samples$counts,2) #converte the counts to log scale
+```
+### Variance and standard deviation
+The variance of the random set of samples was found to be `r var(samples)`.
+
+The standard deviation was found to be `r sd(samples)`.
+
+
+## Plots
+
+
+```{r, echo=FALSE}
+hist(samples)
+plot(hist.samples, main = "Histogram on log scale")
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
